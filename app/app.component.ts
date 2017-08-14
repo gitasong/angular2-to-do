@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
     <h1>To Do List for {{month}}/{{day}}/{{year}}</h1>
     <h3>{{currentFocus}}</h3>
     <ul>
-      <li *ngFor="let currentTask of tasks">{{currentTask.description}}  <button (click)="editTask()">Edit!</button>
+      <li (click)="isDone(currentTask)" *ngFor="let currentTask of tasks">{{currentTask.description}}  <button (click)="editTask()">Edit!</button>
       </li>
     </ul>
   </div>
@@ -28,6 +28,14 @@ export class AppComponent {
 
   editTask() {
     alert("You just requested to edit a Task!");
+  }
+
+  isDone(clickedTask: Task) {
+    if(clickedTask.done === true) {
+      alert("This task is done!");
+    } else {
+      alert("This task is not done. Better get to work!");
+    }
   }
 }
 
