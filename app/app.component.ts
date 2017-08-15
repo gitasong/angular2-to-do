@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
     <h1>To Do List for {{month}}/{{day}}/{{year}}</h1>
     <h3>{{currentFocus}}</h3>
     <ul>
-      <li [class]="priorityColor(currentTask)" (click)="isDone(currentTask)" *ngFor="let currentTask of tasks">{{currentTask.description}}  <button (click)="editTask(currentTask)">Edit!</button>
+      <li (click)="toggleDone(currentTask)" [ngStyle]="setStyle(currentTask)" [class]="priorityColor(currentTask)" *ngFor="let currentTask of tasks">{{currentTask.description}}  <button (click)="editTask(currentTask)">Edit!</button>
       </li>
     </ul>
     <hr>
@@ -17,18 +17,23 @@ import { Component } from '@angular/core';
           <h3>Edit Task</h3>
           <label>Enter Task Description:</label>
           <input [(ngModel)]="selectedTask.description">
-          <label>Enter Task Priority (1-3):</label>
           <br>
-          <input type="radio" [(ngModel)]="selectedTask.priority" [value]="1">1 (Low Priority)<br>
-          <input type="radio" [(ngModel)]="selectedTask.priority" [value]="2">2 (Medium Priority)<br>
-          <input type="radio" [(ngModel)]="selectedTask.priority" [value]="3">3 (High Priority)
-          <button (click)="finishedEditing()">Done</button>
+
+          <form id="edit">
+            <label>Enter Task Priority (1-3):</label>
+            <br>
+            <input type="radio" name="priority" [(ngModel)]="selectedTask.priority" [value]="1">1 (Low Priority)<br>
+            <input type="radio" name="priority" [(ngModel)]="selectedTask.priority" [value]="2">2 (Medium Priority)<br>
+            <input type="radio" name="priority" [(ngModel)]="selectedTask.priority" [value]="3">3 (High Priority)
+            <button (click)="finishedEditing()">Done</button>
+          </form>
        </div>
   </div>
   `
 })
 
 export class AppComponent {
+  isClassVisible: false;
   currentFocus: string = 'Angular Homework';
   currentTime = new Date();
   month: number = this.currentTime.getMonth() + 1;
@@ -49,13 +54,42 @@ export class AppComponent {
     this.selectedTask = null;
   }
 
-  isDone(clickedTask: Task) {
-    if(clickedTask.done === true) {
-      alert("This task is done!");
+  toggleDone(currentTask) {
+    console.log('toggle');
+    // currentTask.done = !currentTask.done;
+    if (currentTask.done === false) {
+      currentTask.done = true;
     } else {
-      alert("This task is not done. Better get to work!");
+      currentTask.done = false;
     }
   }
+
+  setStyle(currentTask) {
+    // let style;
+    // if (currentTask.done) {
+    //   console.log('true');
+    //   style = {
+    //     'text-decoration': 'line-through'
+    //   }
+    // } else {
+    //   console.log('false');
+    //   style = {
+    //     'text-decoration': 'none'
+    //   }
+    // }
+    let style = {
+      'text-decoration': currentTask.done ? 'line-through': 'none'
+    };
+    return style;
+  }
+
+  // isDone(clickedTask: Task) {
+  //   if(clickedTask.done === true) {
+  //     alert("This task is done!");
+  //   } else {
+  //     alert("This task is not done. Better get to work!");
+  //   }
+  // }
 
   priorityColor(currentTask){
     if (currentTask.priority === 3){
