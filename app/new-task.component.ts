@@ -22,5 +22,7 @@ import { Task } from './task.model';
 })
 
 export class NewTaskComponent {
-
+  submitForm(description: string, priority: number) {
+    var newTaskToAdd: Task = new Task(description, priority);
+  }
 }
