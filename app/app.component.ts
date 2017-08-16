@@ -38,4 +38,8 @@ export class AppComponent {
   finishedEditing() {
     this.selectedTask = null;
   }
+
+  addTask(newTaskFromChild: Task) {
+    this.masterTaskList.push(newTaskFromChild);
+  }
 }
