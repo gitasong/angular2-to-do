@@ -16,6 +16,7 @@ import { Task } from './task.model';
       <option [value]="2"> Medium Priority </option>
       <option [value]="3"> High Priority </option>
     </select>
+    <button (click)="submitForm(newDescription.value, newPriority.value)">Add</button>
   </div>
   `
 })
