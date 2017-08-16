@@ -8,7 +8,7 @@ import { Task } from './task.model';
     <h1>To Do List for {{month}}/{{day}}/{{year}}</h1>
     <h3>{{currentFocus}}</h3>
 
-    <task-list></task-list>
+    <task-list [childTaskList]="masterTaskList"></task-list>
 
     <hr>
         <div *ngIf="selectedTask">
