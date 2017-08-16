@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Task } from './task.model';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   <div class="container">
     <h1>To Do List for {{month}}/{{day}}/{{year}}</h1>
     <h3>{{currentFocus}}</h3>
-    
+
     <task-list></task-list>
 
     <hr>
@@ -47,9 +48,4 @@ export class AppComponent {
   finishedEditing() {
     this.selectedTask = null;
   }
-}
-
-export class Task {
-  public done: boolean = false;
-  constructor(public description: string, public priority: number) { }
 }
