@@ -5,17 +5,17 @@ import { Task } from './task.model';
   selector: 'edit-task',
   template: `
   <div>
-      <div *ngIf="selectedTask">
-        <h3>{{selectedTask.description}}</h3>
-        <p>Task Complete? {{selectedTask.done}}</p>
+      <div *ngIf="childSelectedTask">
+        <h3>{{childSelectedTask.description}}</h3>
+        <p>Task Complete? {{childSelectedTask.done}}</p>
         <hr>
         <h3>Edit Task</h3>
         <label>Enter Task Description:</label>
-        <input [(ngModel)]="selectedTask.description">
+        <input [(ngModel)]="childSelectedTask.description">
         <label>Enter Task Priority (1-3):</label><br>
-        <input type="radio" [(ngModel)]="selectedTask.priority" [value]="1">1 (Low Priority)<br>
-        <input type="radio" [(ngModel)]="selectedTask.priority" [value]="2">2 (Medium Priority)<br>
-        <input type="radio" [(ngModel)]="selectedTask.priority" [value]="3">3 (High Priority)
+        <input type="radio" [(ngModel)]="childSelectedTask.priority" [value]="1">1 (Low Priority)<br>
+        <input type="radio" [(ngModel)]="childSelectedTask.priority" [value]="2">2 (Medium Priority)<br>
+        <input type="radio" [(ngModel)]="childSelectedTask.priority" [value]="3">3 (High Priority)
         <button (click)="finishedEditing()">Done</button>
       </div>
     </div>
