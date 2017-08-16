@@ -23,5 +23,5 @@ import { Task } from './task.model';
 })
 
 export class EditTaskComponent {
-  
+  @Input() childSelectorTask: Task;
 }
