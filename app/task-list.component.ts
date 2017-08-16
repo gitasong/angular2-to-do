@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Task } from './task.model';
 
 @Component({
   selector: 'task-list',
   template: `
   <ul>
-    <li (click)="toggleDone(currentTask)" [ngStyle]="setStyle(currentTask)" [class]="priorityColor(currentTask)" *ngFor="let currentTask of tasks">{{currentTask.description}}  <button (click)="editTask(currentTask)">Edit!</button>
+    <li (click)="toggleDone(currentTask)" [ngStyle]="setStyle(currentTask)" [class]="priorityColor(currentTask)" *ngFor="let currentTask of childTaskList">{{currentTask.description}}  <button (click)="editTask(currentTask)">Edit!</button>
     </li>
   </ul>
   `
 })
 
 export class TaskListComponent {
+  @Input() childTaskList: Task[];
+
   toggleDone(currentTask) {
     console.log('toggle');
     // currentTask.done = !currentTask.done;
