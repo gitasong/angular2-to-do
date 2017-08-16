@@ -4,7 +4,19 @@ import { Task } from './task.model';
 @Component({
   selector: 'new-task',
   template: `
-    <h1>New Task</h1>
+  <h1>New Task</h1>
+   <div>
+     <label>Enter Task Description:</label>
+     <input #newDescription>
+   </div>
+   <div>
+    <label>Task Priority:</label>
+    <select #newPriority>
+      <option [value]="1"> Low Priority </option>
+      <option [value]="2"> Medium Priority </option>
+      <option [value]="3"> High Priority </option>
+    </select>
+  </div>
   `
 })
 
