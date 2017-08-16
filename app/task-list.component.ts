@@ -5,7 +5,7 @@ import { Task } from './task.model';
   selector: 'task-list',
   template: `
   <ul>
-    <li (click)="toggleDone(currentTask)" [ngStyle]="setStyle(currentTask)" [class]="priorityColor(currentTask)" *ngFor="let currentTask of childTaskList">{{currentTask.description}}  <button (click)="editButtonHasBeenClicked(currentTask)">Edit!</button>
+    <li (click)="toggleDone(currentTask)" [ngStyle]="setStyle(currentTask)" *ngFor="let currentTask of childTaskList">{{currentTask.description}}  <button (click)="editButtonHasBeenClicked(currentTask)">Edit!</button>
     </li>
   </ul>
   `
@@ -55,14 +55,4 @@ export class TaskListComponent {
   //     alert("This task is not done. Better get to work!");
   //   }
   // }
-
-  priorityColor(currentTask){
-    if (currentTask.priority === 3){
-      return "bg-danger";
-    } else if (currentTask.priority === 2) {
-      return  "bg-warning";
-    } else {
-      return "bg-info";
-    }
-  }
 }
