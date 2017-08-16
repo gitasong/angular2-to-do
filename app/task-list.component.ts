@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from './task.model';
 
 @Component({
@@ -13,6 +13,7 @@ import { Task } from './task.model';
 
 export class TaskListComponent {
   @Input() childTaskList: Task[];
+  @Output() clickSender = new EventEmitter();
 
   toggleDone(currentTask) {
     console.log('toggle');
