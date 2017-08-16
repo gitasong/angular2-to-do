@@ -5,7 +5,7 @@ import { Task } from './task.model';
   selector: 'task-list',
   template: `
   <ul>
-    <li (click)="toggleDone(currentTask)" [ngStyle]="setStyle(currentTask)" [class]="priorityColor(currentTask)" *ngFor="let currentTask of childTaskList">{{currentTask.description}}  <button (click)="editTask(currentTask)">Edit!</button>
+    <li (click)="toggleDone(currentTask)" [ngStyle]="setStyle(currentTask)" [class]="priorityColor(currentTask)" *ngFor="let currentTask of childTaskList">{{currentTask.description}}  <button (click)="editButtonHasBeenClicked(currentTask)">Edit!</button>
     </li>
   </ul>
   `
@@ -14,6 +14,10 @@ import { Task } from './task.model';
 export class TaskListComponent {
   @Input() childTaskList: Task[];
   @Output() clickSender = new EventEmitter();
+
+  editButtonHasBeenClicked(taskToEdit: Task) {
+    this.clickSender.emit(taskToEdit);
+  }
 
   toggleDone(currentTask) {
     console.log('toggle');
