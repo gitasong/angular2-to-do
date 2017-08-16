@@ -9,7 +9,7 @@ import { Task } from './task.model';
     <h3>{{currentFocus}}</h3>
     <task-list [childTaskList]="masterTaskList" (clickSender)="editTask($event)"></task-list>
     <hr>
-    <edit-task></edit-task>
+    <edit-task [childSelectedTask="selectedTask"]></edit-task>
   </div>
   `
 })
