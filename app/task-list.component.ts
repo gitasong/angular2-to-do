@@ -4,6 +4,12 @@ import { Task } from './task.model';
 @Component({
   selector: 'task-list',
   template: `
+  <select>
+    <option value="allTasks">All Tasks</option>
+    <option value="completedTasks">Completed Tasks</option>
+    <option value="incompleteTasks" selected="selected">Incomplete Tasks</option>
+  </select>
+  
   <ul>
     <li *ngFor="let currentTask of childTaskList | completeness"> <span (click)="toggleDone(currentTask)" [ngStyle]="setStyle(currentTask)">{{currentTask.description}}  </span><button (click)="editButtonHasBeenClicked(currentTask)">Edit!</button>
     </li>
