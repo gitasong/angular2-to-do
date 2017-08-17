@@ -26,5 +26,6 @@ export class NewTaskComponent {
 
   submitForm(description: string, priority: number) {
     var newTaskToAdd: Task = new Task(description, priority);
+    this.newTaskSender.emit(newTaskToAdd);
   }
 }
