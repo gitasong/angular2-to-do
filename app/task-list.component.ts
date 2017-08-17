@@ -12,6 +12,8 @@ import { Task } from './task.model';
 
   <ul>
     <li (click)="isDone(currentTask)" *ngFor="let currentTask of childTaskList | completeness:filterByCompleteness">{{currentTask.description}} {{currentTask.priority}}
+      <input *ngIf="currentTask.done === true" type="checkbox" (click)="toggleDone(currentTask, false)"/>
+      <input *ngIf="currentTask.done === false" type="checkbox" (click)="toggleDone(currentTask, true)"/>
       <button (click)="editButtonHasBeenClicked(currentTask)">Edit!</button>
     </li>
   </ul>
@@ -32,34 +34,34 @@ export class TaskListComponent {
     this.clickSender.emit(taskToEdit);
   }
 
-  toggleDone(currentTask) {
-    console.log('toggle');
-    // currentTask.done = !currentTask.done;
-    if (currentTask.done === false) {
-      currentTask.done = true;
-    } else {
-      currentTask.done = false;
-    }
-  }
-
-  setStyle(currentTask) {
-    // let style;
-    // if (currentTask.done) {
-    //   console.log('true');
-    //   style = {
-    //     'text-decoration': 'line-through'
-    //   }
-    // } else {
-    //   console.log('false');
-    //   style = {
-    //     'text-decoration': 'none'
-    //   }
-    // }
-    let style = {
-      'text-decoration': currentTask.done ? 'line-through': 'none'
-    };
-    return style;
-  }
+  // toggleDone(currentTask) {
+  //   console.log('toggle');
+  //   // currentTask.done = !currentTask.done;
+  //   if (currentTask.done === false) {
+  //     currentTask.done = true;
+  //   } else {
+  //     currentTask.done = false;
+  //   }
+  // }
+  //
+  // setStyle(currentTask) {
+  //   // let style;
+  //   // if (currentTask.done) {
+  //   //   console.log('true');
+  //   //   style = {
+  //   //     'text-decoration': 'line-through'
+  //   //   }
+  //   // } else {
+  //   //   console.log('false');
+  //   //   style = {
+  //   //     'text-decoration': 'none'
+  //   //   }
+  //   // }
+  //   let style = {
+  //     'text-decoration': currentTask.done ? 'line-through': 'none'
+  //   };
+  //   return style;
+  // }
 
   // isDone(clickedTask: Task) {
   //   if(clickedTask.done === true) {
