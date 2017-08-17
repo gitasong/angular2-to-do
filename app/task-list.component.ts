@@ -11,7 +11,7 @@ import { Task } from './task.model';
   </select>
 
   <ul>
-    <li (click)="isDone(currentTask)" *ngFor="let currentTask of childTaskList | completeness">{{currentTask.description}} {{currentTask.priority}}
+    <li (click)="isDone(currentTask)" *ngFor="let currentTask of childTaskList | completeness:filterByCompleteness">{{currentTask.description}} {{currentTask.priority}}
       <button (click)="editButtonHasBeenClicked(currentTask)">Edit!</button>
     </li>
   </ul>
