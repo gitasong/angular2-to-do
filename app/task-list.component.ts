@@ -4,12 +4,12 @@ import { Task } from './task.model';
 @Component({
   selector: 'task-list',
   template: `
-  <select>
+  <select (change)="onChange($event.target.value)">
     <option value="allTasks">All Tasks</option>
     <option value="completedTasks">Completed Tasks</option>
     <option value="incompleteTasks" selected="selected">Incomplete Tasks</option>
   </select>
-  
+
   <ul>
     <li *ngFor="let currentTask of childTaskList | completeness"> <span (click)="toggleDone(currentTask)" [ngStyle]="setStyle(currentTask)">{{currentTask.description}}  </span><button (click)="editButtonHasBeenClicked(currentTask)">Edit!</button>
     </li>
@@ -20,6 +20,8 @@ import { Task } from './task.model';
 export class TaskListComponent {
   @Input() childTaskList: Task[];
   @Output() clickSender = new EventEmitter();
+
+  filterByCompleteness: string = "incompleteTasks";
 
   editButtonHasBeenClicked(taskToEdit: Task) {
     this.clickSender.emit(taskToEdit);
