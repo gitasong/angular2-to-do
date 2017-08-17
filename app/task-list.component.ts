@@ -23,6 +23,10 @@ export class TaskListComponent {
 
   filterByCompleteness: string = "incompleteTasks";
 
+  onChange(optionFromMenu) {
+    this.filterByCompleteness = optionFromMenu;
+  }
+
   editButtonHasBeenClicked(taskToEdit: Task) {
     this.clickSender.emit(taskToEdit);
   }
