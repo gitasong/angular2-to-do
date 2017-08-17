@@ -34,34 +34,9 @@ export class TaskListComponent {
     this.clickSender.emit(taskToEdit);
   }
 
-  // toggleDone(currentTask) {
-  //   console.log('toggle');
-  //   // currentTask.done = !currentTask.done;
-  //   if (currentTask.done === false) {
-  //     currentTask.done = true;
-  //   } else {
-  //     currentTask.done = false;
-  //   }
-  // }
-  //
-  // setStyle(currentTask) {
-  //   // let style;
-  //   // if (currentTask.done) {
-  //   //   console.log('true');
-  //   //   style = {
-  //   //     'text-decoration': 'line-through'
-  //   //   }
-  //   // } else {
-  //   //   console.log('false');
-  //   //   style = {
-  //   //     'text-decoration': 'none'
-  //   //   }
-  //   // }
-  //   let style = {
-  //     'text-decoration': currentTask.done ? 'line-through': 'none'
-  //   };
-  //   return style;
-  // }
+  toggleDone(clickedTask: Task, setCompleteness: boolean) {
+    clickedTask.done = setCompleteness;
+  }
 
   // isDone(clickedTask: Task) {
   //   if(clickedTask.done === true) {
